@@ -1,0 +1,10 @@
+/*
+Theme Name: Product Review (a child theme of Avenue)
+Template: Avenue
+Description: Customized child theme of premium Avenue them. Make sure the Avenue theme is present in the theme directory
+Author: Sohag
+Author URI: http://sohag07hasan.elance.com
+Version: 1.0.1
+*/
+
+@import url(../Avenue/style.css);
