@@ -1,5 +1,14 @@
 <?php
 
+define("PR_Avenue", get_option('siteurl') . '/wp-content/themes/Avenue');
+
+function pr_bloginfo($string = ""){
+	switch($string){
+		case "template_directory" :
+			echo PR_Avenue;
+			break;
+	}
+}
 
 // return true if the reviewzon plugin puts an image as thumb
 function pr_has_post_thumbnail($image_type = 0, $post_id = null){	
@@ -28,3 +37,6 @@ function pr_get_post_thumbnail_src($image_type = 0, $post_id = null){
 	return get_post_meta( $post_id, $meta_key, true );		
 }
 
+
+// widgets
+include_once "widgets/widgets.php";
