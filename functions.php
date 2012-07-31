@@ -40,3 +40,19 @@ function pr_get_post_thumbnail_src($image_type = 0, $post_id = null){
 
 // widgets
 include_once "widgets/widgets.php";
+
+
+//excerpt modification
+add_action('get_the_excerpt', 'pr_shortcode', 7);
+function pr_shortcode($content){	
+	global $post;
+		
+	$shortcodes = shortcode_parse_atts($content);
+	if(is_array($shortcodes)):	
+		if($shortcodes[0] == "[ReviewAZON"){
+			return get_post_meta($post->ID, "ReviewAZON_Description", true);			
+		}		
+	endif;
+	
+	return $content;
+}
