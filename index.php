@@ -25,8 +25,9 @@
 						<div id="slider" class="nivoSlider">
 							<?php while($featured_posts->have_posts()): $featured_posts->the_post(); ?>
 								
-								<?php if(pr_has_post_thumbnail()): ?>
-									<?php $image = pr_get_post_thumbnail_src(0, $post->ID); ?>									
+								<?php if(pr_has_featured_image($post->ID)): ?>
+									<?php $image = 'http://www.d4electronics.com/images/' . pr_get_featured_image_src($post->ID); ?>									
+									<?php //$image = get_post_meta($post->ID, 'ReviewAZON_FImage', true); ?>									
 									<?php $image_thumb = pr_get_post_thumbnail_src(2, $post->ID); ?>									
 									<a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" rel="<?php echo $image_thumb; ?>" title="#htmlcaption_<?php the_ID(); ?>" width='516' height='340' /></a>
 								<?php else: ?>

@@ -18,35 +18,7 @@
 					<span class="heading-date"><?php the_date(); ?></span>
 					<span class="heading-comments"><?php comments_popup_link('0','1','%'); ?></span>
 				</div>
-				
-				<?php if(has_post_thumbnail()): ?>
-				
-				<?php
-				$show_image = false;
-				
-				if(get_post_meta($post->ID, 'pyre_featured_image', true) == 'yes') {
-					$show_image = true;
-				}
-				
-				if(get_post_meta($post->ID, 'pyre_featured_image', true) == '' && get_option('pyre_posts_featured') == 'Off') {
-					$show_image = true;
-				}
-				
-				if(get_option('pyre_posts_featured') == 'Off') {
-					$show_image = false;
-				}
-				?>
-				
-				<?php if(
-					$show_image == true
-				): ?>
-				<div class="post-thumb">
-					<?php $fullImage = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full'); ?>
-					<?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'post-image'); ?>
-					<a class='lightbox' href='<?php echo $fullImage[0]; ?>'><img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>" width='610' height='250' /></a>
-				</div>
-				<?php endif; ?>
-				<?php endif; ?>
+								
 				
 				<div class="post-entry">
 					<?php if(

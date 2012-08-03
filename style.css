@@ -8,3 +8,55 @@ Version: 1.0.1
 */
 
 @import url(../Avenue/style.css);
+
+
+/*
+ * widget's css
+ * */
+ 
+.reviewClass{	
+	background-color: #FAE4E4;
+	margin-top: -5px;	
+}
+
+.reviewClass img, .reviewClass span{
+	border: none;
+	padding: 5px;
+	margin-top: 3px;
+	margin-left: 3px;
+	
+}
+
+.reviewClass img{
+	height: 15px;
+	width: 80px;
+}
+
+
+
+.priceClass{
+	float: right;
+	margin-right: 10px;
+	font-weight: bold;
+	font-size: 19px;
+}
+
+.block-item-big img{
+	margin-bottom: 2px;
+}
+
+.block-meta img{
+	border: none;
+	height: 15px;
+	width: 80px;
+}
+
+.block-meta .priceClass{
+	margin-top: -4px;
+	
+	
+}
+
+.block-meta{
+	margin-bottom: 2px;
+}

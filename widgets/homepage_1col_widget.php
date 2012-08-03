@@ -68,11 +68,21 @@ class pr_Pyre_Homepage_1col_Widget extends WP_Widget {
 			<?php if($counter <= $big_count): ?>
 			<?php if($counter == $big_count) { $last = 'block-item-big-last'; } else { $last = ''; }?>
 			<div class="block-item-big <?php echo $last; ?>">
-				<?php if($images && has_post_thumbnail()): ?>
-				<?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'widget-image'); ?>
-				<div class="block-image"><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>" width='290' height='160' /></a><?php echo $icon; ?></div>
+				<?php if($images && pr_has_post_thumbnail()): ?>
+				<?php $image = pr_get_post_thumbnail_src(0, $post->ID); ?>
+				<div class="block-image"><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" width='290' height='160' /></a><?php echo $icon; ?>
+				
+				<p class="reviewClass">
+					<a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'>
+						<?php $img_Review = pr_get_avg_rating_image($post->ID); ?>
+						<img src="<?php echo $img_Review?>" alt="<?php echo $img_Review;?>" /> 
+						<span class="priceClass"><?php echo pr_get_min_price($post->ID); ?></span>
+					</a>
+				</p>
+				
+				</div>
 				<?php else: ?>
-				<div class="block-image"><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><img src="<?php bloginfo('template_directory'); ?>/timthumb.php?src=<?php bloginfo('template_directory'); ?>/images/thumbnail.png&w=290&h=160" alt="<?php the_title(); ?>" width='290' height='160' /></a><?php echo $icon; ?></div>
+				<div class="block-image"><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><img src="<?php echo PR_Avenue; ?>/timthumb.php?src=<?php echo PR_Avenue; ?>/images/thumbnail.png&w=290&h=160" alt="<?php the_title(); ?>" width='290' height='160' /></a><?php echo $icon; ?></div>
 				<?php endif; ?>
 				<h2><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><?php the_title(); ?></a></h2>
 				<span class="block-meta"><?php the_time('F j, Y'); ?>, <?php comments_popup_link(); ?></span>
@@ -80,14 +90,20 @@ class pr_Pyre_Homepage_1col_Widget extends WP_Widget {
 			</div>
 			<?php else: ?>
 			<div class="block-item-small">
-				<?php if($images && has_post_thumbnail()): ?>
-				<?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'widget-image-thumb'); ?>
-				<div class="block-image"><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>" width='50' height='50' /></a><?php echo $icon; ?></div>
+				<?php if($images && pr_has_post_thumbnail()): ?>
+				<?php $image = pr_get_post_thumbnail_src(2, $post->ID); ?>
+				<div class="block-image"><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" width='50' height='50' /></a><?php echo $icon; ?></div>
 				<?php else: ?>
-				<div class="block-image"><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><img src="<?php bloginfo('template_directory'); ?>/timthumb.php?src=<?php bloginfo('template_directory'); ?>/images/thumbnail.png&w=50&h=50" alt="<?php the_title(); ?>"  width='50' height='50' /></a><?php echo $icon; ?></div>
+				<div class="block-image"><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><img src="<?php echo PR_Avenue; ?>/timthumb.php?src=<?php echo PR_Avenue; ?>/images/thumbnail.png&w=50&h=50" alt="<?php the_title(); ?>"  width='50' height='50' /></a><?php echo $icon; ?></div>
 				<?php endif; ?>
 				<h2><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><?php the_title(); ?></a></h2>
-				<span class="block-meta"><?php the_time('F j, Y'); ?>, <?php comments_popup_link(); ?></span>
+				<span class="block-meta">
+					<a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'>
+						<?php $img_Review = pr_get_avg_rating_image($post->ID); ?>						
+						<img src="<?php echo $img_Review?>" alt="<?php echo $img_Review;?>" />
+						<span class="priceClass"><?php echo pr_get_min_price($post->ID); ?></span>					
+					</a>
+				</span>
 			</div>
 			<?php endif; ?>
 			<?php $counter++; endwhile; ?>
