@@ -30,6 +30,7 @@ Version: 1.0.1
 .reviewClass img{
 	height: 15px;
 	width: 80px;
+	border: 0 none !important;
 }
 
 
@@ -49,10 +50,11 @@ Version: 1.0.1
 	border: none;
 	height: 15px;
 	width: 80px;
+	border: 0 none !important;
 }
 
 .block-meta .priceClass{
-	margin-top: -4px;
+	margin-top: -1px;
 	
 	
 }

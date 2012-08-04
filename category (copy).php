@@ -4,12 +4,12 @@
 			<div id="main">
 				
 				<div class="block archive">
-									
+				
 					<h3>
 						<?php echo single_cat_title('', false); ?>
 						<span class="arrows">&raquo;</span>
 					</h3>
-								
+					
 					<?php if(category_description($category)): ?>
 					<?php echo category_description($category); ?>
 					<br /><br />

@@ -84,9 +84,11 @@ function pr_get_avg_rating_image($post_id = null){
 	
 	$overall_rating = $ratings[0] + $fraction;
 	
+	/*
 	if($overall_rating == 0) {
 		$overall_rating = "0.5";
 	}
+	*/
 	
 	$imageurl = get_option('siteurl') . '/wp-content/themes/productreview/images/stars/' . $overall_rating . '.png';
 	return $imageurl;
@@ -127,4 +129,26 @@ function pr_shortcode($content){
 	endif;
 	
 	return $content;
+}
+
+
+/*
+ * Top Level Categories
+ * */
+add_filter('category_template', 'pr_top_level_category_template');
+function pr_top_level_category_template($template){
+	if(pr_has_child_category()){
+		$template = dirname(__FILE__) . '/top-level-category.php';
+	}	
+	
+	return $template;	
+}
+
+/*
+ * returns true if it is a top level category
+ * */
+function pr_has_child_category(){
+	$term = get_queried_object();
+	$child_categories = get_categories(array('type'=>'post', 'child_of'=>$term->term_id));
+	return (empty($child_categories)) ? false : true;
 }
