@@ -62,3 +62,12 @@ Version: 1.0.1
 .block-meta{
 	margin-bottom: 2px;
 }
+
+.top-level-category-h3 h3{
+	background: url("images/heading-box.png") no-repeat scroll 0 0 transparent;
+    font-size: 26px;
+    height: 51px;
+    margin-bottom: 25px;
+    padding-left: 10px;
+    text-shadow: 1px 1px 1px #FFFFFF;
+}
