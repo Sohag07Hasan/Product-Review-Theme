@@ -158,11 +158,25 @@
 					<?php endif; ?>
 				</div>
 				<?php endif; ?>
+							
+				<?php 
+					if(function_exists('related_posts')){
+						global $yarpp;
+						$related = $yarpp->display_related(null, array('post_type'=>'post'), false, true);
+															
+					}
+					else{
+						$tags = get_the_tags();
+						if($tags){
+							$related = get_related_posts($post->ID, $tags);
+						}			
+					}
+										
+				?>
 				
-				<?php $tags = get_the_tags(); ?>
-				<?php if($tags): ?>
-				<?php $related = get_related_posts($post->ID, $tags); ?>
-				<?php if($related->have_posts() && $related->found_posts >= 3 && get_option('pyre_related') == 'On'): ?>
+				
+				<?php if(!empty($related)) : ?>
+												
 				<div class='homepage-widget'>
 					<div class="block full">
 						
@@ -193,7 +207,8 @@
 					</div>
 				</div>
 				<?php endif; ?>
-				<?php endif; ?>
+							
+				
 				<?php wp_reset_query(); ?>
 				
 				<div id="comments">

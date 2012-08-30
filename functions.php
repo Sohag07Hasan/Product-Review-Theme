@@ -152,3 +152,33 @@ function pr_has_child_category(){
 	$child_categories = get_categories(array('type'=>'post', 'child_of'=>$term->term_id));
 	return (empty($child_categories)) ? false : true;
 }
+
+
+/*
+ * retursn the style attribut of images considering the size
+ * */
+function pr_get_image_style($src){
+	$size = getimagesize($src);
+	$styles = array();
+	$style = "";
+	if(is_array($size)) :
+		$div_width = 290;
+		$div_height = 160;
+		
+		$width = $size[0];
+		$height = $size[1];
+		
+		if($height < $div_height){
+			$reminder_height = $div_height - $height;
+			$styles['margin-top'] = floor($reminder_height / 2) . "px";
+		}
+		
+	endif;
+	
+	foreach($styles as $key => $value){
+		$style .= $key . ":" . $value . ";" ;
+	}
+	
+	return $style;
+}
+

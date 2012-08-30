@@ -45,6 +45,9 @@
 						$recent_posts = new WP_Query(array(
 							'posts_per_page' => 4,
 							'cat' => $widget->term_id,
+							'orderby' => 'meta_value',
+							'meta_key' => 'ReviewAZON_ReviewCount',
+							'order' => 'DESC'
 						));
 					?>
 					

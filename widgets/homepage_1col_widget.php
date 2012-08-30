@@ -51,6 +51,9 @@ class pr_Pyre_Homepage_1col_Widget extends WP_Widget {
 			$recent_posts = new WP_Query(array(
 				'showposts' => $posts,
 				'cat' => $categories,
+				'orderby' => 'meta_value',
+				'meta_key' => 'ReviewAZON_ReviewCount',
+				'order' => 'DESC'
 			));
 			?>
 			<?php
@@ -75,7 +78,8 @@ class pr_Pyre_Homepage_1col_Widget extends WP_Widget {
 				<p class="reviewClass">
 					<a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'>
 						<?php $img_Review = pr_get_avg_rating_image($post->ID); ?>
-						<img src="<?php echo $img_Review?>" alt="<?php echo $img_Review;?>" /> 
+						<img src="<?php echo $img_Review?>" alt="<?php echo $img_Review;?>" />
+						<span class="revewNumber"> (<?php echo pr_get_avg_rating(); ?>) </span> 
 						<span class="priceClass"><?php echo pr_get_min_price($post->ID); ?></span>
 					</a>
 				</p>
@@ -84,8 +88,10 @@ class pr_Pyre_Homepage_1col_Widget extends WP_Widget {
 				<?php else: ?>
 				<div class="block-image"><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><img src="<?php echo PR_Avenue; ?>/timthumb.php?src=<?php echo PR_Avenue; ?>/images/thumbnail.png&w=290&h=160" alt="<?php the_title(); ?>" width='290' height='160' /></a><?php echo $icon; ?></div>
 				<?php endif; ?>
-				<h2><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><?php the_title(); ?></a></h2>
-				<span class="block-meta"><?php the_time('F j, Y'); ?>, <?php comments_popup_link(); ?></span>
+				<h2><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><?php pr_the_title(37); ?></a></h2>
+				
+				<!-- <span class="block-meta"><?php //the_time('F j, Y'); ?>, <?php //comments_popup_link(); ?></span> -->
+				
 				<?php if($show_excerpt == 'true'): ?><p><?php echo string_limit_words(get_the_excerpt(), 15); ?> ...</p><?php endif; ?>
 			</div>
 			<?php else: ?>
@@ -96,7 +102,8 @@ class pr_Pyre_Homepage_1col_Widget extends WP_Widget {
 				<?php else: ?>
 				<div class="block-image"><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><img src="<?php echo PR_Avenue; ?>/timthumb.php?src=<?php echo PR_Avenue; ?>/images/thumbnail.png&w=50&h=50" alt="<?php the_title(); ?>"  width='50' height='50' /></a><?php echo $icon; ?></div>
 				<?php endif; ?>
-				<h2><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><?php the_title(); ?></a></h2>
+				<h2><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><?php pr_the_title(37); ?></a></h2>
+				
 				<span class="block-meta">
 					<a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'>
 						<?php $img_Review = pr_get_avg_rating_image($post->ID); ?>						

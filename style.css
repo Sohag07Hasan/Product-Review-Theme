@@ -63,11 +63,17 @@ Version: 1.0.1
 	margin-bottom: 2px;
 }
 
-.top-level-category-h3 h3{
-	background: url("images/heading-box.png") no-repeat scroll 0 0 transparent;
-    font-size: 26px;
-    height: 51px;
-    margin-bottom: 25px;
-    padding-left: 10px;
-    text-shadow: 1px 1px 1px #FFFFFF;
+
+.block-image-pr{
+	width: 290px;
+	height: 160px;
+	overflow: hidden;
+	border: 1px solid #C2C2C2;
+	text-align: center;
+	vertical-align: middle;
 }
+
+.block-image-pr img, .block-image-pr img:hover{
+	border: none;
+}
+

@@ -25,10 +25,10 @@
 						}
 						?>
 						<?php if(pr_has_post_thumbnail()): ?>
-						<?php $image = pr_get_post_thumbnail_src(0, $post->ID); ?>
-						<div class="block-image"><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" width='290' height='160' /></a><?php echo $icon; ?></div>
+						<?php $image = pr_get_post_thumbnail_src(1, $post->ID); ?>
+						<div class="block-image block-image-pr"><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><img style="<?php echo pr_get_image_style($image); ?>" src="<?php echo $image; ?>" alt="<?php the_title(); ?>" /></a><?php echo $icon; ?></div>
 						<?php else: ?>
-						<div class="block-image"><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><img src="<?php pr_bloginfo('template_directory'); ?>/timthumb.php?src=<?php pr_bloginfo('template_directory'); ?>/images/thumbnail.png&w=290&h=160" alt="<?php the_title(); ?>" width='290' height='160' /></a><?php echo $icon; ?></div>
+						<div class="block-image"><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><img src="<?php pr_bloginfo('template_directory'); ?>/timthumb.php?src=<?php pr_bloginfo('template_directory'); ?>/images/thumbnail.png&w=290&h=160" alt="<?php the_title(); ?>" /></a><?php echo $icon; ?></div>
 						<?php endif; ?>
 						<h2><a href='<?php the_permalink(); ?>' title='<?php the_title(); ?>'><?php the_title(); ?></a></h2>
 						<span class="block-meta">
